@@ -5,6 +5,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/clerk-react";
+import { shadesOfPurple } from "@clerk/themes";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -14,7 +15,19 @@ if (!PUBLISHABLE_KEY) {
 
 export default function RootLayout() {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      // appearance={{
+      //   baseTheme: shadesOfPurple,
+      // }}
+      appearance={{
+        layout: {
+          socialButtonsPlacement: "bottom",
+          socialButtonsVariant: "iconButton",
+          termsPageUrl: "https://clerk.com/terms",
+        },
+      }}
+      publishableKey={PUBLISHABLE_KEY}
+    >
       <header className="header">
         <div>
           <div>
